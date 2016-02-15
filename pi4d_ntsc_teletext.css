@@ -1,0 +1,60 @@
+body {
+	background-color: #000000;
+	font-size: 12px;
+}
+
+h1 {
+	color: #FFFFFF;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+h2 {
+	font-size: 18px;
+}
+	
+h3 {
+	font-size: 20px;
+}
+
+h4 {
+	font-size: 14px;
+}
+
+h1 .text-muted {
+	color: #CCCCCC;
+}
+
+h2, .h2, h3, .h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+hr {
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.footer {
+	font-size: 10px;
+}
+
+.top3-1st {
+	color: #FFFF00;
+}
+
+.top3-2nd {
+	color: #00FF00;
+}
+
+.top3-3rd {
+	color: #00FFFF;
+}
+
+.starters {
+	color: #FFFFFF;
+}
+
+.consolation {
+	color: #00FFFF;
+}
