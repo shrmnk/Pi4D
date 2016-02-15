@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pi4d extends CI_Controller {
 
 	public function index() {
-		$this->version = '2.0';
+		$this->version = '2.1';
 		
 		date_default_timezone_set("Asia/Singapore");
 		$this->load->helper('url');
@@ -18,9 +18,10 @@ class Pi4d extends CI_Controller {
 	}
 	
 	private function get4DResults() {
+		$this->config->load('pi4d');
 		try {
-			$client = new GuzzleHttp\Client(['base_uri' => 'http://www.live.4d.endpoint/json/']);
-			$response = $client->request('GET', 'api_endpoint.asp');
+			$client = new GuzzleHttp\Client(['base_uri' => $this->config->item('pi4d_api_baseurl')]);
+			$response = $client->request('GET', $this->config->item('pi4d_api_endpoint'));
 		} catch (GuzzleHttp\Exception\TransferException $e) {
 			$this->success = false;
 			return array('success' => false, 'reason' => 'Error: '.$e->getMessage());

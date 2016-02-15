@@ -60,10 +60,14 @@
 				// Wednesday -> Check on Saturday
 				var refreshDate = new Date(Math.floor( (currentDate.getTime() + 3*shrinkToDayCoefficient) / shrinkToDayCoefficient) * shrinkToDayCoefficient);
 				$(".next-refresh").html("Loaded on Wednesday > 7pm, Next refresh set to " + refreshDate.toString());
-			} else {
-				// Otherwise, it means that we are on result day but its not 7pm yet.
+			} else if(currentDate.getDay() == 0 || currentDate.getDay() == 3 || currentDate.getDay() == 6) {
+				// Is result day but its not 7pm yet
 				var refreshDate = new Date(Math.floor( (currentDate.getTime() + (19 - currentDate.getHours())*shrinkToHoursCoefficient) / shrinkToHoursCoefficient) * shrinkToHoursCoefficient);
 				$(".next-refresh").html("Loaded on Result Day < 7pm, Next refresh set to " + refreshDate.toString());
+			} else {
+				// Otherwise, it is a non-result day. Set to refresh at 7pm the next day.
+				var refreshDate = new Date(Math.floor( (currentDate.getTime() + (43 - currentDate.getHours())*shrinkToHoursCoefficient) / shrinkToHoursCoefficient) * shrinkToHoursCoefficient);
+				$(".next-refresh").html("Loaded on non-result day, Next refresh set to " + refreshDate.toString());
 			}
 			
 			refreshTimeout = setTimeout(function() { location.reload(); }, refreshDate.getTime() - currentDate.getTime());
